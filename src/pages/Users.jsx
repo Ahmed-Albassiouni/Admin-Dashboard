@@ -99,7 +99,7 @@ const Users = () => {
         </div>
         <button
           className="icon-button"
-          onClick={fetchUsers}
+          onClick={() => fetchUsers(true)} 
           disabled={isLoading}
           type="button"
         >

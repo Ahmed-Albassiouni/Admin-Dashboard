@@ -8,10 +8,9 @@ const useUsersStore = create(
       isLoading: false,
       error: null,
       
-      async fetchUsers() {
-        // لو البيانات موجودة بالفعل (سواء من fetch قديم أو متسجلة في المتصفح)، متعملش fetch تاني!
-        // ده بيضمن إن أي تعديل (إضافة/حذف) يفضل موجود
-        if (get().users.length > 0 || get().isLoading) return;
+      async fetchUsers(force = false) { // ضفنا كلمة force هنا
+        // لو مش force (يعني مش ضغطة زرار) وعندنا داتا، متعملش fetch
+        if ((get().users.length > 0 && !force) || get().isLoading) return;
 
         set({ isLoading: true, error: null })
         try {
