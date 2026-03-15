@@ -10,13 +10,27 @@ const UsersTable = ({ users, isLoading, error, onRetry, onDeleteUser, onOpenModa
   const [currentPage, setCurrentPage] = useState(1)
 
   const filteredUsers = useMemo(() => {
-    if (!query.trim()) {
+    
+    if (!query || !query.trim()) {
       return users
     }
-    const lower = query.toLowerCase()
+    
+    const lowerQuery = query.toLowerCase().trim()
+
     return users.filter((user) => {
-      const fullName = `${user.firstName} ${user.lastName}`.toLowerCase()
-      return fullName.includes(lower) || user.email.toLowerCase().includes(lower)
+      const firstName = user?.firstName || ''
+      const lastName = user?.lastName || ''
+      const email = user?.email || ''
+      const phone = String(user?.phone || '') 
+
+      const fullName = `${firstName} ${lastName}`.toLowerCase()
+      const safeEmail = email.toLowerCase()
+
+      return (
+        fullName.includes(lowerQuery) || 
+        safeEmail.includes(lowerQuery) || 
+        phone.includes(lowerQuery)
+      )
     })
   }, [users, query])
 
