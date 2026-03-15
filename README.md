@@ -47,4 +47,3 @@ Make sure you have Node.js installed on your machine.
    git clone https://github.com/Ahmed-Albassiouni/Admin-Dashboard.git
 
 
-## by Ahmed Al-Bassiouni 
