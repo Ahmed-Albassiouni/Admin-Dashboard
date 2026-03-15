@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import {
   Activity,
   ArrowUpRight,
@@ -110,21 +111,49 @@ const CustomTooltip = ({ active, payload, label }) => {
       </div>
     )
   }
-
   return null
+}
+
+// === إعدادات الحركة (Framer Motion Variants) ===
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15, // التاخير بين كل عنصر والتاني (جزء من الثانية)
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 }, // بيبدأ مخفي ونازل لتحت شوية
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { type: 'spring', stiffness: 300, damping: 24 } 
+  }, // بيظهر ويطلع لمكانه الطبيعي بنعومة
 }
 
 const Dashboard = () => {
   return (
-    <div className="space-y-8">
+    // استخدام motion.div الحاوية اللي بتشغل الأنيميشن لكل العناصر اللي جواها
+    <motion.div 
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="space-y-8"
+    >
       <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {stats.map((stat) => (
-          <StatCard key={stat.title} {...stat} />
+          // كل كارت بياخد حركة لوحده
+          <motion.div key={stat.title} variants={itemVariants}>
+            <StatCard {...stat} />
+          </motion.div>
         ))}
       </section>
 
       <section className="grid gap-6 xl:grid-cols-[2fr_1fr]">
-        <div className="glass-card p-6">
+        <motion.div variants={itemVariants} className="glass-card p-6">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <h3 className="text-lg font-semibold">Revenue Overview</h3>
@@ -157,9 +186,9 @@ const Dashboard = () => {
               </LineChart>
             </ResponsiveContainer>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="glass-card p-6">
+        <motion.div variants={itemVariants} className="glass-card p-6">
           <div>
             <h3 className="text-lg font-semibold">Traffic by Device</h3>
             <p className="text-sm text-muted-foreground">Session distribution</p>
@@ -206,11 +235,11 @@ const Dashboard = () => {
               ))}
             </div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
       <section className="grid gap-6 xl:grid-cols-[1.3fr_1fr]">
-        <div className="glass-card p-6">
+        <motion.div variants={itemVariants} className="glass-card p-6">
           <div className="flex items-center gap-2">
             <LineChartIcon className="h-5 w-5 text-primary" />
             <h3 className="text-lg font-semibold">Recent Activity</h3>
@@ -229,9 +258,9 @@ const Dashboard = () => {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        <div className="glass-card p-6">
+        <motion.div variants={itemVariants} className="glass-card p-6">
           <h3 className="text-lg font-semibold">Performance Highlights</h3>
           <p className="text-sm text-muted-foreground">Weekly key indicators</p>
           <div className="mt-6 space-y-4">
@@ -246,9 +275,9 @@ const Dashboard = () => {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </section>
-    </div>
+    </motion.div>
   )
 }
 
