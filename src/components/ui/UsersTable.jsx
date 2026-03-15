@@ -161,7 +161,7 @@ const UsersTable = ({ users, isLoading, error, onRetry, onDeleteUser, onOpenModa
       <div className="mt-6 overflow-x-auto">
         <table className="min-w-[860px] w-full text-left text-sm">
           <thead className="text-xs uppercase text-muted-foreground">
-            <tr className="... transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800/50 hover:-translate-y-1 hover:shadow-lg cursor-pointer">
+            <tr>
               <th className="pb-3 font-medium">User</th>
               <th className="pb-3 font-medium">
                 <button
@@ -217,7 +217,7 @@ const UsersTable = ({ users, isLoading, error, onRetry, onDeleteUser, onOpenModa
               ))
             ) : paginatedUsers.length ? (
               paginatedUsers.map((user) => (
-                <tr key={user.id} className="border-t border-border text-sm">
+                <tr key={user.id} className="group border-t border-border text-sm transition-all duration-300 hover:bg-muted/50 hover:shadow-sm cursor-pointer relative z-0 hover:z-10">
                   <td className="py-4">
                     <div className="flex items-center gap-3">
                       <img
