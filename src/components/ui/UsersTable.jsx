@@ -161,7 +161,7 @@ const UsersTable = ({ users, isLoading, error, onRetry, onDeleteUser, onOpenModa
       <div className="mt-6 overflow-x-auto">
         <table className="min-w-[860px] w-full text-left text-sm">
           <thead className="text-xs uppercase text-muted-foreground">
-            <tr>
+            <tr className="... transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-800/50 hover:-translate-y-1 hover:shadow-lg cursor-pointer">
               <th className="pb-3 font-medium">User</th>
               <th className="pb-3 font-medium">
                 <button
