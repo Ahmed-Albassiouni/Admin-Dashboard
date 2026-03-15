@@ -3,8 +3,7 @@
 A premium, fully responsive Admin Dashboard built with modern React web technologies. This project demonstrates advanced frontend capabilities including state management, API integration, interactive data visualization, and complex UI components.
 
 ##  Live Demo
-> **[Insert your Vercel/Netlify Live Link Here]**
-
+> **[https://admin-dashboard-nu-woad.vercel.app/]
 ---
 
 ##  Key Features
@@ -43,7 +42,9 @@ Make sure you have Node.js installed on your machine.
 
 ### Installation
 
-1. https://admin-dashboard-nu-woad.vercel.app/
-2. https://github.com/Ahmed-Albassiouni/Admin-Dashboard.git
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Ahmed-Albassiouni/Admin-Dashboard.git
+
 
 ## by Ahmed Al-Bassiouni 
